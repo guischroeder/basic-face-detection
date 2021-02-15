@@ -1,0 +1,1 @@
+from .basic_face_detection_controller import basic_face_detection_bp
