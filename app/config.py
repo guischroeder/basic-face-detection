@@ -5,4 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN", "")
+HACKATTIC_ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+
+S3_ACCESS_KEY = os.getenv("S3_ACCESS_KEY")
+S3_SECRET_ACCESS_KEY = os.getenv("S3_SECRET_ACCESS_KEY")
+
+REKOGNITION_ACCESS_KEY = os.getenv("REKOGNITION_ACCESS_KEY")
+REKOGNITION_SECRET_ACCESS_KEY = os.getenv("REKOGNITION_SECRET_ACCESS_KEY")
