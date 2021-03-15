@@ -10,6 +10,7 @@ python = "^3.9"
 Flask = "^1.1.2"
 python-dotenv = "^0.15.0"
 requests = "^2.25.1"
+boto3 = "^1.17.27"
 
 [tool.poetry.dev-dependencies]
 

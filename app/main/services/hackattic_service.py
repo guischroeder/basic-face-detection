@@ -7,8 +7,10 @@ class HackatticService:
     def __init__(self, credentials):
         self._credentials = credentials
 
-    def get_problem(self):
+    def get_image_url(self):
         url = self._base_url.replace("{section}", "problem")
         params = {"access_token": self._credentials.get("access_token")}
 
-        return requests.get(url, params).json()
+        response = requests.get(url, params).json()
+
+        return response.get("image_url", "")
