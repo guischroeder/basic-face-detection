@@ -200,7 +200,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "842a48386bcfcc8407476a604f6535f91e22b81e17a0046a9484afe48d45f836"
+content-hash = "43b4fd65c7c5f301be13035120b1c0d24a347aaa1658c78c24022d8b75ccc380"
 
 [metadata.files]
 boto3 = [
