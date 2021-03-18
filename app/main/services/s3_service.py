@@ -2,8 +2,8 @@ import requests
 
 
 class S3Service:
-    def __init__(self, aws_client):
-        self._aws_client = aws_client
+    def __init__(self, s3_client):
+        self._s3_client = s3_client
 
     def upload_image_from_url(self, image_url, bucket, key):
         response = requests.get(image_url)
@@ -13,4 +13,4 @@ class S3Service:
         )
 
     def _put_object(self, params):
-        return self._aws_client.get_instance().put_object(**params)
+        return self._s3_client.get_instance().put_object(**params)
