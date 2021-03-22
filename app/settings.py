@@ -21,12 +21,16 @@ class Settings:
         }
 
     @staticmethod
-    def s3_bucket():
-        return {
-            "name": os.getenv("S3_BUCKET"),
-            "key": os.getenv("S3_BUCKET_IMAGE_PATH"),
-            "region": os.getenv("S3_BUCKET_REGION"),
-        }
+    def s3_service_region():
+        return os.getenv("S3_SERVICE_REGION")
+
+    @staticmethod
+    def s3_bucket_name():
+        return os.getenv("S3_BUCKET_NAME")
+
+    @staticmethod
+    def s3_bucket_image_path():
+        return os.getenv("S3_BUCKET_IMAGE_PATH")
 
     ### REKOGNITION ###
     @staticmethod
