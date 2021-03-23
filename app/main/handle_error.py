@@ -1,6 +1,6 @@
 import logging
+import json
 
-from flask import jsonify
 from werkzeug.exceptions import HTTPException
 
 
@@ -14,4 +14,4 @@ def handle_error(e):
 
     logging.error(error_message)
 
-    return jsonify(error=error_message), code
+    return json.dumps({"error": error_message}), code

@@ -43,4 +43,4 @@ def get():
 
     recognited_image = challenge_solver.solve_the_problem()
 
-    return send_file(recognited_image, mimetype='image.jpeg', as_attachment=False)
+    return send_file(recognited_image, mimetype="image.jpeg", as_attachment=False)

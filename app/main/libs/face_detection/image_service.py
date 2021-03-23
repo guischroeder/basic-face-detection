@@ -13,8 +13,8 @@ class ImageService:
         s3_response = self._s3_service.get_image(BUCKET_NAME, IMAGE_PATH)
 
         if not s3_response["Body"]:
-            raise Exception("Can\'t generate the recognited image")
-        
+            raise Exception("Can't generate the recognited image")
+
         stream = io.BytesIO(s3_response["Body"].read())
         image = Image.open(stream)
         draw = ImageDraw.Draw(image)
