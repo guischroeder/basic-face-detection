@@ -12,5 +12,11 @@ class S3Service:
             {"Bucket": bucket_name, "Key": image_path, "Body": response.content}
         )
 
+    def get_image(self, bucket, image_path):
+        return self._get_object(bucket, image_path)
+
     def _put_object(self, params):
         return self._s3_client.get_instance().put_object(**params)
+
+    def _get_object(self, bucket, image_path):
+        return self._s3_client.get_instance().get_object(Bucket=bucket, Key=image_path)

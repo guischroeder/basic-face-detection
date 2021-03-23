@@ -12,6 +12,7 @@ python-dotenv = "^0.15.0"
 requests = "^2.25.1"
 boto3 = "^1.17.27"
 Werkzeug = "^1.0.1"
+Pillow = "^8.1.2"
 
 [tool.poetry.dev-dependencies]
 

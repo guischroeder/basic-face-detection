@@ -3,8 +3,10 @@ from app.main.general import IMAGE_HEIGHT, IMAGE_WIDTH
 
 
 class PositionsService:
-    def find_positions(self, detect_faces):
-        bounding_boxes_positions = self._get_bounding_boxes_positions(detect_faces)
+    def find_positions(self, detected_faces_response):
+        bounding_boxes_positions = self.get_bounding_boxes_positions(
+            detected_faces_response
+        )
 
         positions = [
             [
@@ -20,8 +22,8 @@ class PositionsService:
 
         return positions
 
-    def _get_bounding_boxes_positions(self, detected_faces):
-        if not detected_faces or not detected_faces["FaceDetails"]:
+    def get_bounding_boxes_positions(self, detected_faces_response):
+        if not detected_faces_response or not detected_faces_response["FaceDetails"]:
             raise Exception("Can't get bounding boxes positions.")
 
         return [
@@ -31,5 +33,5 @@ class PositionsService:
                 "width": detected_face["BoundingBox"]["Width"] * IMAGE_WIDTH,
                 "height": detected_face["BoundingBox"]["Height"] * IMAGE_HEIGHT,
             }
-            for detected_face in detected_faces["FaceDetails"]
+            for detected_face in detected_faces_response["FaceDetails"]
         ]
