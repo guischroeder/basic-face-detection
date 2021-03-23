@@ -40,6 +40,6 @@ def get():
         bucket_name=BUCKET_NAME, image_path=IMAGE_PATH,
     )
 
-    positions = position_service.findPositions(faces)
+    positions = position_service.find_positions(faces)
 
     return hackattic_client.solve(positions)
