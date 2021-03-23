@@ -1,4 +1,4 @@
-from app.main.general import BUCKET_NAME, IMAGE_PATH
+from app.main.constants import BUCKET_NAME, IMAGE_PATH
 
 
 class ChallengeSolver:

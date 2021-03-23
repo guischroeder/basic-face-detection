@@ -1,5 +1,5 @@
 from app.main.helpers.position_helper import find_position, center_of_square
-from app.main.general import IMAGE_HEIGHT, IMAGE_WIDTH
+from app.main.constants import IMAGE_HEIGHT, IMAGE_WIDTH
 
 
 class PositionsService:
