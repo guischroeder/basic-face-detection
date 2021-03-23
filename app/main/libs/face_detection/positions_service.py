@@ -8,7 +8,9 @@ class PositionsService:
 
         positions = [
             [
-                find_position(center_of_square(bounding_box["x"], bounding_box["width"])),
+                find_position(
+                    center_of_square(bounding_box["x"], bounding_box["width"])
+                ),
                 find_position(
                     center_of_square(bounding_box["y"], bounding_box["height"])
                 ),
