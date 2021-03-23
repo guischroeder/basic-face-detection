@@ -1,13 +1,13 @@
-from flask import Blueprint, jsonify
-
-from app.main.libs.hackattic.hackattic_client import HackatticClient
+from flask import Blueprint, send_file
+from app.main.libs.hackattic.hackattic_service import HackatticService
 from app.main.libs.aws.aws_client import AWSClient
 from app.main.libs.aws.s3_service import S3Service
 from app.main.libs.aws.rekognition_service import RekognitionService
 from app.main.libs.face_detection.positions_service import PositionsService
-from app.main.utils.handle_error import handle_error
+from app.main.libs.face_detection.image_service import ImageService
+from app.main.libs.challenge_solver import ChallengeSolver
+from app.main.handle_error import handle_error
 from app.main.config import config
-from app.main.general import BUCKET_NAME, IMAGE_PATH
 
 
 basic_face_detection_bp = Blueprint("basic_face_detection", __name__)
@@ -20,26 +20,27 @@ def error_handler(e):
 
 @basic_face_detection_bp.route("/solve", methods=["GET"])
 def get():
-    hackattic_client = HackatticClient(config["hackattic"])
     s3_client = AWSClient(aws_service="s3", config=config["s3"])
     rekognition_client = AWSClient(
         aws_service="rekognition", config=config["rekognition"]
     )
 
+    hackattic_service = HackatticService(config["hackattic"])
     s3_service = S3Service(s3_client)
     rekognition_service = RekognitionService(rekognition_client)
     position_service = PositionsService()
-
-    s3_service.upload_image_from_url(
-        image_url=hackattic_client.get_problem().get("image_url", ""),
-        bucket_name=BUCKET_NAME,
-        image_path=IMAGE_PATH,
+    image_service = ImageService(
+        position_service=position_service, s3_service=s3_service
     )
 
-    faces = rekognition_service.detect_faces(
-        bucket_name=BUCKET_NAME, image_path=IMAGE_PATH,
+    challenge_solver = ChallengeSolver(
+        hackattic_service=hackattic_service,
+        s3_service=s3_service,
+        rekognition_service=rekognition_service,
+        position_service=position_service,
+        image_service=image_service,
     )
 
-    positions = position_service.find_positions(faces)
+    recognited_image = challenge_solver.solve_the_problem()
 
-    return hackattic_client.solve(positions)
+    return send_file(recognited_image, mimetype="image.jpeg", as_attachment=False)
