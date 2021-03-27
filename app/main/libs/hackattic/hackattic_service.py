@@ -1,4 +1,3 @@
-import json
 import requests
 
 
@@ -8,14 +7,16 @@ class HackatticService:
     def __init__(self, config):
         self._access_token_qs = "?access_token=" + config["access_token"]
 
-    def get_problem(self):
+    def get_image_url(self):
         url = self._base_url.replace("{section}", "problem") + self._access_token_qs
 
-        return requests.get(url).json()
+        response = requests.get(url).json()
 
-    def solve(self, positions):
+        return response["image_url"]
+
+    def solve(self, data):
         url = self._base_url.replace("{section}", "solve") + self._access_token_qs
 
-        body = json.dumps({"face_tiles": positions})
+        body = {"face_tiles": data}
 
         return requests.post(url, body).json()

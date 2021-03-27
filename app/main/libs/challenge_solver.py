@@ -26,7 +26,7 @@ class ChallengeSolver:
         return self._image_service.generate_recognited_image(faces)
 
     def _detect_faces(self):
-        image_url = self._hackattic_service.get_problem().get("image_url", "")
+        image_url = self._hackattic_service.get_image_url()
 
         self._s3_service.upload_image_from_url(
             image_url=image_url, bucket_name=BUCKET_NAME, image_path=IMAGE_PATH,
