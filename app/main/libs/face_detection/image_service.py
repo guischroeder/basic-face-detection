@@ -18,19 +18,20 @@ class ImageService:
         buffer = io.BytesIO(s3_response["Body"].read())
         image = Image.open(buffer)
 
-        final_image = self._draw_rectangles_on_image(image, detected_faces_response)
+        bounding_boxes = self._position_service.get_bounding_boxes_positions(
+            detected_faces_response
+        )
+        final_image = self._highlight_faces(image, bounding_boxes)
 
         final_image_buffer = io.BytesIO()
         final_image.save(final_image_buffer, format="jpeg")
 
         return io.BytesIO(final_image_buffer.getvalue())
 
-    def _draw_rectangles_on_image(self, image, detected_faces_response):
+    def _highlight_faces(self, image, bounding_boxes):
         draw = ImageDraw.Draw(image)
 
-        for bounding_box in self._position_service.get_bounding_boxes_positions(
-            detected_faces_response
-        ):
+        for bounding_box in bounding_boxes:
             x = bounding_box["x"]
             y = bounding_box["y"]
             width = bounding_box["width"]

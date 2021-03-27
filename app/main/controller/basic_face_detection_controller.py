@@ -18,7 +18,7 @@ def error_handler(e):
     return handle_error(e)
 
 
-@basic_face_detection_bp.route("/solve", methods=["GET"])
+@basic_face_detection_bp.route("/", methods=["GET"])
 def get():
     s3_client = AWSClient(aws_service="s3", config=config["s3"])
     rekognition_client = AWSClient(
