@@ -7,19 +7,19 @@ class ChallengeSolver:
         hackattic_service,
         s3_service,
         rekognition_service,
-        position_service,
+        positions_service,
         image_service,
     ):
         self._hackattic_service = hackattic_service
         self._s3_service = s3_service
         self._rekognition_service = rekognition_service
-        self._position_service = position_service
+        self._positions_service = positions_service
         self._image_service = image_service
 
     def solve_the_problem(self):
         faces = self._detect_faces()
 
-        positions = self._position_service.find_positions(faces)
+        positions = self._positions_service.find_positions(faces)
 
         self._hackattic_service.solve(positions)
 

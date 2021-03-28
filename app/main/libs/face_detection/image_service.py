@@ -5,12 +5,15 @@ from app.main.constants import BUCKET_NAME, IMAGE_PATH, FINAL_IMAGE_PATH
 
 
 class ImageService:
-    def __init__(self, position_service, s3_service):
-        self._position_service = position_service
+    _bucket_name = BUCKET_NAME
+    _image_path = IMAGE_PATH
+
+    def __init__(self, positions_service, s3_service):
+        self._positions_services = positions_service
         self._s3_service = s3_service
 
     def generate_recognited_image(self, detected_faces_response):
-        s3_response = self._s3_service.get_image(BUCKET_NAME, IMAGE_PATH)
+        s3_response = self._s3_service.get_image(self._bucket_name, self._image_path)
 
         if not s3_response["Body"]:
             raise Exception("Can't generate the recognited image")
@@ -18,7 +21,7 @@ class ImageService:
         buffer = io.BytesIO(s3_response["Body"].read())
         image = Image.open(buffer)
 
-        bounding_boxes = self._position_service.get_bounding_boxes_positions(
+        bounding_boxes = self._positions_services.get_bounding_boxes_positions(
             detected_faces_response
         )
         final_image = self._highlight_faces(image, bounding_boxes)

@@ -1,4 +1,5 @@
 from flask import Blueprint, send_file
+
 from app.main.libs.hackattic.hackattic_service import HackatticService
 from app.main.libs.aws.aws_client import AWSClient
 from app.main.libs.aws.s3_service import S3Service
@@ -28,16 +29,16 @@ def get():
     hackattic_service = HackatticService(config["hackattic"])
     s3_service = S3Service(s3_client)
     rekognition_service = RekognitionService(rekognition_client)
-    position_service = PositionsService()
+    positions_service = PositionsService()
     image_service = ImageService(
-        position_service=position_service, s3_service=s3_service
+        positions_service=positions_service, s3_service=s3_service
     )
 
     challenge_solver = ChallengeSolver(
         hackattic_service=hackattic_service,
         s3_service=s3_service,
         rekognition_service=rekognition_service,
-        position_service=position_service,
+        positions_service=positions_service,
         image_service=image_service,
     )
 
