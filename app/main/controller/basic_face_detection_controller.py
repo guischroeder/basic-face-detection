@@ -6,7 +6,7 @@ from app.main.libs.aws.s3_service import S3Service
 from app.main.libs.aws.rekognition_service import RekognitionService
 from app.main.libs.face_detection.positions_service import PositionsService
 from app.main.libs.face_detection.image_service import ImageService
-from app.main.libs.challenge_solver import ChallengeSolver
+from app.main.libs.face_detection.face_detection_facade import FaceDetectionFacade
 from app.main.handle_error import handle_error
 from app.main.config import config
 
@@ -34,7 +34,7 @@ def get():
         positions_service=positions_service, s3_service=s3_service
     )
 
-    challenge_solver = ChallengeSolver(
+    face_detection_facade = FaceDetectionFacade(
         hackattic_service=hackattic_service,
         s3_service=s3_service,
         rekognition_service=rekognition_service,
@@ -42,6 +42,8 @@ def get():
         image_service=image_service,
     )
 
-    recognited_image = challenge_solver.solve_the_problem()
+    face_detection_facade.solve_problem()
+
+    recognited_image = face_detection_facade.show_detected_faces()
 
     return send_file(recognited_image, mimetype="image.jpeg", as_attachment=False)

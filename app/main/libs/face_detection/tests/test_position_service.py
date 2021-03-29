@@ -51,7 +51,9 @@ def test_find_positions(data):
 
 
 def test_find_positions_with_no_bounding_boxes(mocker, data_with_no_bouding_boxes):
-    spy = mocker.spy(positions_service, "get_bounding_boxes_positions")
+    get_bounding_boxes_positions = mocker.spy(
+        positions_service, "get_bounding_boxes_positions"
+    )
 
     assert len(positions_service.find_positions(data_with_no_bouding_boxes)) == 0
-    assert spy.spy_return == []
+    assert get_bounding_boxes_positions.spy_return == []

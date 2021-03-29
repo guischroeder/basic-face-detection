@@ -9,20 +9,11 @@ from app.main.libs.aws.aws_client import AWSClient
 from app.main.libs.aws.s3_service import S3Service
 from app.main.libs.face_detection.image_service import ImageService
 from app.main.libs.face_detection.positions_service import PositionsService
+from app.main.helpers.tests_helper import create_test_image
 
 
 bucket_name = "test_bucket"
 image_path = "test_image_path"
-
-
-def create_test_image():
-    file = BytesIO()
-    image = Image.new("RGB", (800, 800), color="white")
-    image.save(file, "jpeg")
-    file.name = "test.jpeg"
-    file.seek(0)
-
-    return file
 
 
 def create_bucket_with_image(s3, image):

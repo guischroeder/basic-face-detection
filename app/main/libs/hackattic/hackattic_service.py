@@ -14,7 +14,7 @@ class HackatticService:
 
         return response["image_url"]
 
-    def solve(self, data):
+    def send_result(self, data):
         url = self._base_url.replace("{section}", "solve") + self._access_token_qs
 
         body = {"face_tiles": data}

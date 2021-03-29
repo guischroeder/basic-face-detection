@@ -1,7 +1,7 @@
 from app.main.constants import BUCKET_NAME, IMAGE_PATH
 
 
-class ChallengeSolver:
+class FaceDetectionFacade:
     def __init__(
         self,
         hackattic_service,
@@ -16,14 +16,19 @@ class ChallengeSolver:
         self._positions_service = positions_service
         self._image_service = image_service
 
-    def solve_the_problem(self):
+    def show_detected_faces(self):
         faces = self._detect_faces()
 
         positions = self._positions_service.find_positions(faces)
 
-        self._hackattic_service.solve(positions)
-
         return self._image_service.generate_recognited_image(faces)
+
+    def solve_problem(self):
+        faces = self._detect_faces()
+
+        positions = self._positions_service.find_positions(faces)
+
+        self._hackattic_service.send_result(positions)
 
     def _detect_faces(self):
         image_url = self._hackattic_service.get_image_url()
