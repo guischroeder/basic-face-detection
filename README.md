@@ -33,6 +33,6 @@ REKOGNITION_SECRET_ACCESS_KEY=your_secret_access_key
 By doing this you are good to go executing `python -m pytest`.
 
 ## API
-The endpoint `/basic-face-detection/solve` will show you the faces in the image provided by Hackattic. Running in your localhost it might take a while due to the AWS services latency. Also, sometimes, you may get a timeout error from Hackattic when trying to solve the challange. You can check your latency [here](https://ping.psa.fun/) and choose the region with the lowest ping to set in the config file. Another way to solve this is by running the app in a virtual machine with [ec2](https://aws.amazon.com/ec2/) so you can set to be in the same region of other required services.
+The endpoint `/basic-face-detection/solve` will show you the faces in the image provided by Hackattic. Running in your localhost might take a while due to the AWS services latency. Also, sometimes, you may get a timeout error from Hackattic when trying to solve the challange. You can check your latency [here](https://ping.psa.fun/) and choose the region with the lowest ping to set in the config file. Another way to solve this is by running the app in a virtual machine with [ec2](https://aws.amazon.com/ec2/) so you can set to be in the same region of other required services.
 
 ![image](https://user-images.githubusercontent.com/53911589/112843869-739c5580-9079-11eb-8429-300fe816a397.png)
