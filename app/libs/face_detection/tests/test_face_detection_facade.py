@@ -2,14 +2,14 @@ import requests
 
 from io import BytesIO
 
-from app.main.libs.hackattic.hackattic_service import HackatticService
-from app.main.libs.aws.aws_client import AWSClient
-from app.main.libs.aws.s3_service import S3Service
-from app.main.libs.aws.rekognition_service import RekognitionService
-from app.main.libs.face_detection.positions_service import PositionsService
-from app.main.libs.face_detection.image_service import ImageService
-from app.main.libs.face_detection.face_detection_facade import FaceDetectionFacade
-from app.main.helpers.tests_helper import create_test_image
+from app.libs.hackattic.hackattic_service import HackatticService
+from app.libs.aws.aws_client import AWSClient
+from app.libs.aws.s3_service import S3Service
+from app.libs.aws.rekognition_service import RekognitionService
+from app.libs.face_detection.positions_service import PositionsService
+from app.libs.face_detection.image_service import ImageService
+from app.libs.face_detection.face_detection_facade import FaceDetectionFacade
+from app.helpers.tests_helper import create_test_image
 
 
 def build_facade(s3, rekognition):

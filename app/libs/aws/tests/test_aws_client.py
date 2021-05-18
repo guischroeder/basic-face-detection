@@ -1,6 +1,6 @@
 import boto3
 
-from app.main.libs.aws.aws_client import AWSClient
+from app.libs.aws.aws_client import AWSClient
 
 
 def test_aws_client(mocker):

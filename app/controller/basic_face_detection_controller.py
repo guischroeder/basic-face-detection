@@ -1,14 +1,14 @@
 from flask import Blueprint, send_file
 
-from app.main.libs.hackattic.hackattic_service import HackatticService
-from app.main.libs.aws.aws_client import AWSClient
-from app.main.libs.aws.s3_service import S3Service
-from app.main.libs.aws.rekognition_service import RekognitionService
-from app.main.libs.face_detection.positions_service import PositionsService
-from app.main.libs.face_detection.image_service import ImageService
-from app.main.libs.face_detection.face_detection_facade import FaceDetectionFacade
-from app.main.handle_error import handle_error
-from app.main.config import config
+from app.libs.hackattic.hackattic_service import HackatticService
+from app.libs.aws.aws_client import AWSClient
+from app.libs.aws.s3_service import S3Service
+from app.libs.aws.rekognition_service import RekognitionService
+from app.libs.face_detection.positions_service import PositionsService
+from app.libs.face_detection.image_service import ImageService
+from app.libs.face_detection.face_detection_facade import FaceDetectionFacade
+from app.utils.handle_error import handle_error
+from app.config import config
 
 
 basic_face_detection_bp = Blueprint("basic_face_detection", __name__)

@@ -1,6 +1,6 @@
 import requests
 
-from app.main.libs.hackattic.hackattic_service import HackatticService
+from app.libs.hackattic.hackattic_service import HackatticService
 
 
 class TestHackatticService:

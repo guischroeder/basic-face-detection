@@ -1,7 +1,7 @@
 import io
 
 from PIL import Image, ImageDraw
-from app.main.constants import BUCKET_NAME, IMAGE_PATH, FINAL_IMAGE_PATH
+from app.utils.constants import BUCKET_NAME, IMAGE_PATH, FINAL_IMAGE_PATH
 
 
 class ImageService:

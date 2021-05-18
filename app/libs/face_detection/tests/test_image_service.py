@@ -5,11 +5,11 @@ from moto import mock_s3
 from io import BytesIO
 from PIL import Image
 
-from app.main.libs.aws.aws_client import AWSClient
-from app.main.libs.aws.s3_service import S3Service
-from app.main.libs.face_detection.image_service import ImageService
-from app.main.libs.face_detection.positions_service import PositionsService
-from app.main.helpers.tests_helper import create_test_image
+from app.libs.aws.aws_client import AWSClient
+from app.libs.aws.s3_service import S3Service
+from app.libs.face_detection.image_service import ImageService
+from app.libs.face_detection.positions_service import PositionsService
+from app.helpers.tests_helper import create_test_image
 
 
 @mock_s3

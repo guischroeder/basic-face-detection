@@ -1,4 +1,4 @@
-from app.main.constants import BUCKET_NAME, IMAGE_PATH
+from app.utils.constants import BUCKET_NAME, IMAGE_PATH
 
 
 class FaceDetectionFacade:

@@ -2,7 +2,7 @@ import pytest
 
 from collections import OrderedDict
 
-from app.main.libs.face_detection.positions_service import PositionsService
+from app.libs.face_detection.positions_service import PositionsService
 
 
 positions_service = PositionsService()
