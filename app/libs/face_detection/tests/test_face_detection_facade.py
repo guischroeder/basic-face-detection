@@ -9,7 +9,7 @@ from app.libs.aws.rekognition_service import RekognitionService
 from app.libs.face_detection.positions_service import PositionsService
 from app.libs.face_detection.image_service import ImageService
 from app.libs.face_detection.face_detection_facade import FaceDetectionFacade
-from app.helpers.tests_helper import create_test_image
+from app.helpers.create_test_image import create_test_image
 
 
 def build_facade(s3, rekognition):
