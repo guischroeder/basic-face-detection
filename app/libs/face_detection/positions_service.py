@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 from app.helpers.position_helper import find_position, center_of_square
-from app.utils.constants import IMAGE_HEIGHT, IMAGE_WIDTH
+from app.constants import IMAGE_HEIGHT, IMAGE_WIDTH
 
 
 class PositionsService:

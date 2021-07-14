@@ -7,7 +7,7 @@ from app.libs.aws.rekognition_service import RekognitionService
 from app.libs.face_detection.positions_service import PositionsService
 from app.libs.face_detection.image_service import ImageService
 from app.libs.face_detection.face_detection_facade import FaceDetectionFacade
-from app.utils.handle_error import handle_error
+from app.handle_error import handle_error
 from app.config import config
 
 
