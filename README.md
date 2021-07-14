@@ -7,7 +7,7 @@ Be sure you have [Poetry](https://python-poetry.org) installed.
 
 - Fork or clone the project
 - Execute `poetry install` inside the project folder
-- To run the app execute `python3 run.py`
+- To run the app execute `python3 wsgi.py`
 
 ## Configuration
 To run the project you need to create an account in [Hackattic](https://hackattic.com/register), [AWS](https://aws.amazon.com/) and [IAM](https://aws.amazon.com/iam/).
